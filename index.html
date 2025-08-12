@@ -1,49 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Landing Page</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 1.2rem;
-      max-width: 500px;
-    }
-    a {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.75rem 1.5rem;
-      background: white;
-      color: #2575fc;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-    a:hover {
-      background: #f0f0f0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Landing Pages That Convert | New Entrepreneur Web Design</title>
+    <meta name="description" content="Affordable, simple landing pages for new entrepreneurs. Mobile-responsive, conversion-focused design starting at $150.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 60px;
+            text-align: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            margin-top: -20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: #f8f9ff;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .feature p {
+            color: #666;
+            text-align: center;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: #f8f9ff;
+        }
+
+        .price-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .price-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .price-card.featured {
+            border: 3px solid #667eea;
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .price-features li {
+            padding: 0.5rem 0;
+            color: #666;
+        }
+
+        .price-features li:before {
+            content: "✅ ";
+            margin-right: 0.5rem;
+        }
+
+        /* About */
+        .about {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            color: white;
+        }
+
+        .final-cta p {
+            color: #ccc;
+        }
+
+        /* Footer */
+        .footer {
+            background: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                gap: 1rem;
+            }
+
+            .stat {
+                min-width: 100px;
+                padding: 0.8rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .price-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 80px 0 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .feature {
+                padding: 1.5rem;
+            }
+
+            .price-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .feature {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .price-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
 </head>
 <body>
-  <h1>Welcome to My Page 🚀</h1>
-  <p>This is a super simple landing page deployed on Vercel. You can replace this text with anything you want.</p>
-  <a href="https://vercel.com" target="_blank">Learn More</a>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">SimpleLanding</div>
+            <a href="#get-started" class="cta-button">Get Started</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Simple Landing Pages That Actually Convert</h1>
+                <p class="subtitle">Perfect for new entrepreneurs who need results, not complexity</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">$150</span>
+                        <span class="stat-label">Starting Price</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3-5</span>
+                        <span class="stat-label">Day Delivery</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Mobile Ready</span>
+                    </div>
+                </div>
+
+                <a href="#get-started" class="cta-button" style="font-size: 1.2rem; padding: 15px 30px;">Get Your Landing Page →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <h2>Why Choose Simple Over Complex?</h2>
+                <p>I'm new to this game, but that's exactly why I'm perfect for new entrepreneurs like you. No agency bloat, no unnecessary features - just what works.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <h3>Mobile-First Design</h3>
+                        <p>80% of your visitors are on phones. I design for mobile first, then make it look great on desktop too.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast Loading</h3>
+                        <p>Simple code = fast websites. No bloated frameworks or unnecessary plugins slowing things down.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Conversion Focused</h3>
+                        <p>Every element has one job: getting visitors to take action. No distractions, no confusion.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <h3>Entrepreneur Budget</h3>
+                        <p>I understand startup budgets because I'm living it too. Quality work at prices that make sense.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Quick Turnaround</h3>
+                        <p>I know you need this yesterday. Most projects completed within 3-5 days, not weeks.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">🤝</div>
+                        <h3>Fresh Perspective</h3>
+                        <p>Sometimes beginner's mind beats expert assumptions. I'll ask the questions others don't.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="section pricing">
+            <div class="container">
+                <h2>Simple Pricing for Simple Pages</h2>
+                <p>No hidden fees, no hourly rates, no surprises. Pick what fits your needs and budget.</p>
+                
+                <div class="price-cards">
+                    <div class="price-card">
+                        <h3>Starter</h3>
+                        <div class="price">$150</div>
+                        <ul class="price-features">
+                            <li>Single page design</li>
+                            <li>Mobile responsive</li>
+                            <li>Contact form</li>
+                            <li>Basic SEO setup</li>
+                            <li>3 revisions</li>
+                            <li>Hosted & live in 3 days</li>
+                        </ul>
+                        <a href="#get-started" class="cta-button">Get Started</a>
+                    </div>
+                    
+                    <div class="price-card featured">
+                        <div class="featured-badge">Most Popular</div>
+                        <h3>Professional</h3>
+                        <div class="price">$300</div>
+                        <ul class="price-features">
+                            <li>Everything in Starter</li>
+                            <li>Custom graphics</li>
+                            <li>Email integration</li>
+                            <li>Analytics setup</li>
+                            <li>5 revisions</li>
+                            <li>Social media links</li>
+                        </ul>
+                        <a href="#get-started" class="cta-button">Get Started</a>
+                    </div>
+                    
+                    <div class="price-card">
+                        <h3>Complete</h3>
+                        <div class="price">$500</div>
+                        <ul class="price-features">
+                            <li>Everything in Professional</li>
+                            <li>Multi-section page</li>
+                            <li>Advanced forms</li>
+                            <li>Payment integration</li>
+                            <li>Custom animations</li>
+                            <li>Unlimited revisions</li>
+                        </ul>
+                        <a href="#get-started" class="cta-button">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about">
+            <div class="container">
+                <h2>Hi, I'm Learning too!</h2>
+                <p style="color: #ffffff; max-width: 700px;">I started web design 2 weeks ago out of necessity - I needed a landing page for my own business and couldn't afford agency prices. After building mine successfully, other entrepreneurs in my community asked for help. I'm not pretending to be an expert, but sometimes fresh eyes and hungry energy beats years of "that's how we've always done it."</p>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section final-cta" id="get-started">
+            <div class="container">
+                <h2>Ready to Get Your Idea Online?</h2>
+                <p>Fill out the form below and I'll get back to you within 24 hours with a custom quote and timeline.</p>
+                <a href="https://docs.google.com/forms/d/1UUyXSdUjvv1ifz6Q4hHj9ZX5DQZA3aVAT5qThE9BQZQ/edit" class="cta-button" style="font-size: 1.2rem; padding: 15px 30px; margin: 2rem 0;">Fill Out Quick Form →</a>
+                <p><small>No spam, no sales calls. Just honest communication about your project.</small></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 SimpleLanding. Built by a fellow entrepreneur, for entrepreneurs.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
